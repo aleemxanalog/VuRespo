@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>westroWear | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <h2>WESTROWEAR</h2>
+                <p>Admin Portal</p>
+                <i class="fa-solid fa-xmark mobile-close-btn" id="closeSidebarBtn"></i>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="active"><a href="#"><i class="fa-solid fa-box"></i> Products</a></li>
+                <li><a href="/"><i class="fa-solid fa-store"></i> Storefront</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Sidebar overlay for mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <i class="fa-solid fa-bars mobile-menu-btn" id="openSidebarBtn"></i>
+                    <h1>Product Management</h1>
+                </div>
+                <!-- Desktop Nav (replaces sidebar on desktop) -->
+                <ul class="desktop-nav">
+                    <li class="active"><a href="#"><i class="fa-solid fa-box"></i> Products</a></li>
+                    <li><a href="/"><i class="fa-solid fa-store"></i> Storefront</a></li>
+                </ul>
+            </header>
+
+            <div class="content">
+                <!-- Add Product Form -->
+                <section class="card form-card">
+                    <h2>Add New Product</h2>
+                    <form id="addProductForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name</label>
+                                <input type="text" id="productName" required placeholder="e.g. OS-1 Hoodie">
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Price ($)</label>
+                                <input type="number" id="productPrice" step="0.01" required placeholder="185.00">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="width:100%">
+                                <label for="productColors">Available Colors (comma-separated)</label>
+                                <input type="text" id="productColors" placeholder="e.g. RED, BLUE, BLACK">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Image</label>
+                            <div class="image-upload-wrapper">
+                                <input type="file" id="productImageFile" accept="image/*">
+                                <span class="or-separator">OR</span>
+                                <input type="url" id="productImageUrl" placeholder="Paste image URL here">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <i class="fa-solid fa-plus"></i> Add Product
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Product List -->
+                <section class="card list-card">
+                    <h2>Current Products</h2>
+                    <div class="table-container">
+                        <table id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
